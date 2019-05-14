@@ -92,7 +92,7 @@ namespace ConsoleApp1
             {
 
             }
-            while (monBouleEtBill)
+            while (monBouleEtBill) oy
             {
 
             }
