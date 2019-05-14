@@ -14,9 +14,6 @@ namespace ConsoleApp5
 
             Game myGame = new Game();
             myGame.Main();
-
-
-
         }
     }
 }
