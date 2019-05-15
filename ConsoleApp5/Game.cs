@@ -24,14 +24,15 @@ namespace ConsoleApp5
         public void Run()
         {
 
+            int currentPos = 0;
+
+            // écrit la description de la room [position actuelle].
+            Console.WriteLine(myPlan[currentPos].description);
+
             while (true)
             {
 
-                int currentPos = 0;
-
-                // écrit la description de la room [position actuelle].
-                Console.WriteLine(myPlan[currentPos].description);
-                Console.ReadLine();
+                
 
                 //capture ce qu' écrit le joueur puis coupe en deux et transmet les mots dans deux index (comand & item).
                 string readMsg = Console.ReadLine();
@@ -81,17 +82,16 @@ namespace ConsoleApp5
                         }
                         break;
                     case "go":
-
-                        // if (myPlan.Equals(currentPos))
+                        // vérification. On prend l'index qui correspond a la position actuelle puis on vérifie que le dictionnaire contiens bien le mot taper(l'item).
+                        if (myPlan[currentPos].myExit.ContainsKey(item))
+                        {   // La position actuelle deviens  l'ancienne position "actuelle" + l'index associé avec l'item que l'on viens de vérifier.
+                            currentPos = myPlan[currentPos].myExit[item];
+                            // On écrit dans la console la description asssociée avec l'ID de la position actuelle.
+                            Console.WriteLine(myPlan[currentPos].description);
+                        }
+                        else
                         {
-
-                            // Plan.ForEach()
-
-                            //for (int i = 0; i < length; i++)
-                            //{
-
-                            //}
-
+                            Console.WriteLine("Vous ne pouvez pas aller par là.");
                         }
                         break;
                     case "drop":

@@ -5,3 +5,10 @@ C:\Users\Student\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\ConsoleApp5.cspr
 C:\Users\Student\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\ConsoleApp5.csproj.CoreCompileInputs.cache
 C:\Users\Student\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\ConsoleApp5.exe
 C:\Users\Student\source\repos\ConsoleApp5\ConsoleApp5\obj\Debug\ConsoleApp5.pdb
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\bin\Debug\ConsoleApp5.exe.config
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\bin\Debug\ConsoleApp5.exe
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\bin\Debug\ConsoleApp5.pdb
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\obj\Debug\ConsoleApp5.csprojAssemblyReference.cache
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\obj\Debug\ConsoleApp5.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\obj\Debug\ConsoleApp5.exe
+C:\Users\Student\Desktop\Exercices Game dev\ConsoleApp5\obj\Debug\ConsoleApp5.pdb
