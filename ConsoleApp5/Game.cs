@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5
 {
+    /// <summary>
+    /// Contrôle du jeu: Commandes en deux parties a taper = "pick [staff, potion]; use [staff, potion]; drop [staff, potion]; info [room]"
+    /// </summary>
     public class Game
     {
         //L'inventaire, vide au départ
         private Dictionary<string, int> myInventory = new Dictionary<string, int>();
+        public int currentPos = 0;
         // Liste de Room(tiré de la classe Room). (myplan= liste, add(new room = ajoute une room, (0, description) = ajoute un ID de room et une description en string.
         List<Room> myPlan = new List<Room>();
         public void CreateGame()
@@ -27,15 +31,11 @@ namespace ConsoleApp5
         public void Run()
         {
 
-            int currentPos = 0;
-
             // écrit la description de la room [position actuelle].
             Console.WriteLine(myPlan[currentPos].description);
 
             while (true)
             {
-
-
 
                 //capture ce qu' écrit le joueur puis coupe en deux et transmet les mots dans deux index (comand & item).
                 string readMsg = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace ConsoleApp5
                             else                                            // sinon
                             {
                                 Console.WriteLine("Il n'y a rien ici.");
-                                //myInventory[item]++;                        // + 1 (item)
+                       
                             }
                         }
                         else
@@ -78,7 +78,7 @@ namespace ConsoleApp5
                                 // bool bossIsDead == true
                                 // bossIsNotDead == false
                             }
-                            else if (myInventory["staff"] >= 1)              // Si l'item "staff" a un nombre supérieur a 1
+                            else if (myInventory["staff"] >= 1 & currentPos != 5)    // Si l'item "staff" a un nombre supérieur a 1 et que vous n'êtes pas dans la pièce 5
                             {
                                 Console.WriteLine("Vous lancez une boule de feu.");
                             }
@@ -127,33 +127,31 @@ namespace ConsoleApp5
                         break;
                     case "info":
                         // si l'item est info et que la position du joueur est la room 2 et aussi que l'inventaire contiens staff alors...
-                        if (item == "info" & currentPos == 2 & myInventory.ContainsKey("staff"))
+                        if (item == "room" & currentPos == 2 & myInventory.ContainsKey("staff"))
                         {
-                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n° 2.");
+                            NothingHere();
                         }
-                        else if (item == "info" & currentPos == 3 & myInventory.ContainsKey("potion"))
+                        else if (item == "room" & currentPos == 3 & myInventory.ContainsKey("potion"))
                         {
-                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n° 4.");
+                            NothingHere();
                         }
-                        else if (item == "info" & currentPos == 2 & !myInventory.ContainsKey("staff"))
+                        else if (item == "room" & currentPos == 2 & !myInventory.ContainsKey("staff"))
                         {
-                            Console.WriteLine("Un baton étrange est posé contre un des murs. Vous êtes dans la pièce n°2.");
+                            Console.WriteLine("Un baton étrange est posé contre un des murs. Vous êtes dans la pièce n°3.");
                         }
-                        else if (item == "info" & currentPos == 3 & !myInventory.ContainsKey("potion"))
+                        else if (item == "room" & currentPos == 3 & !myInventory.ContainsKey("potion"))
                         {
                             Console.WriteLine("Une petite fiole  contenant un liquide fluorescent est posée sur la table. Vous êtes dans la pièce n°4.");
                         }
                         else
                         {
-                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n°" + (currentPos + 1) + " .");
+                            NothingHere();
                         }
                         break;
 
                 }
 
             }
-
-
         }
 
         public void CreateRooms()
@@ -181,13 +179,17 @@ namespace ConsoleApp5
             myPlan[0].myExit.Add("north", 1);
             myPlan[1].myExit.Add("south", 0);
             myPlan[1].myExit.Add("west", 2);
-            myPlan[1].myExit.Add("est", 3);
-            myPlan[2].myExit.Add("est", 1);
+            myPlan[1].myExit.Add("east", 3);
+            myPlan[2].myExit.Add("east", 1);
             myPlan[3].myExit.Add("west", 1);
             myPlan[3].myExit.Add("north", 4);
             myPlan[4].myExit.Add("south", 3);
-            myPlan[4].myExit.Add("est", 5);
+            myPlan[4].myExit.Add("east", 5);
             myPlan[5].myExit.Add("west", 4);
+        }
+        public void NothingHere()
+        {
+            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n°" + (currentPos + 1) + " .");
         }
 
     }

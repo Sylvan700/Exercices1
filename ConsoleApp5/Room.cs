@@ -21,7 +21,10 @@ namespace ConsoleApp5
             description = myDescription;
         }
 
-        
+        public void GetDescription()
+        {
+
+        }
         
     }
 }

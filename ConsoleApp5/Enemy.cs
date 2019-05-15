@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp5
 {
-    class Enemy
+    public class Enemy
     {
+       // public string name;
+      //  public int HP;
+       // public bool alive;
+
+        //public Enemy(string myBoss, int myHP, bool isALive)
+        //{
+         //   HP = myHP;
+         //   alive = isALive;
+       // }
     }
 }
