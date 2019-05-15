@@ -19,6 +19,9 @@ namespace ConsoleApp5
 
             CreateExits();
 
+            myPlan[2].myItem.Add("staff", 2);
+            myPlan[3].myItem.Add("potion", 4);
+
         }
 
         public void Run()
@@ -32,7 +35,7 @@ namespace ConsoleApp5
             while (true)
             {
 
-                
+
 
                 //capture ce qu' écrit le joueur puis coupe en deux et transmet les mots dans deux index (comand & item).
                 string readMsg = Console.ReadLine();
@@ -44,22 +47,38 @@ namespace ConsoleApp5
                 switch (comand)
                 {
                     case "pick":                                        // pick, use, go, etc. = comand (c'est ce que le joueur écrit).
+                        if (myPlan[currentPos].myItem.ContainsKey(item))   // Si a ma position myItem contiens bien l'item demander alors...
+                        {
 
-                        if (!myInventory.ContainsKey(item))             // "si myInventory ne contiens pas l'item demandé..."
-                        {
-                            myInventory.Add(item, 1);                   // Ajoute 1 (item) dans la base du dictionnaire 
+                            if (!myInventory.ContainsKey(item))             // "si myInventory ne contiens pas l'item demandé..."
+                            {
+                                myInventory.Add(item, 1);                   // Ajoute 1 (item) dans la base du dictionnaire 
+
+                                Console.WriteLine("You have " + myInventory[item] + item + " in your inventory."); // écrit dans la console ( string + nombre d'(item) + nom item + string).
+                            }
+                            else                                            // sinon
+                            {
+                                Console.WriteLine("Il n'y a rien ici.");
+                                //myInventory[item]++;                        // + 1 (item)
+                            }
                         }
-                        else                                            // sinon
+                        else
                         {
-                            myInventory[item]++;                        // + 1 (item)
+                            Console.WriteLine("Il n'y a rien ici.");
                         }
-                        Console.WriteLine("You have " + myInventory[item] + item + " in your inventory."); // écrit dans la console ( string + nombre d'(item) + nom item + string).
+
                         break;
                     case "use":
 
                         if (item == "staff")                            // Si (item) = string
                         {
-                            if (myInventory["staff"] >= 1)              // Si l'item "staff" a un nombre supérieur a 1
+                            if (myInventory["staff"] >= 1 & currentPos == 5) // & bossIsNotDead
+                            {
+                                Console.WriteLine("Vous lancez une boule de feu sur le capitaine de la garde.");
+                                // bool bossIsDead == true
+                                // bossIsNotDead == false
+                            }
+                            else if (myInventory["staff"] >= 1)              // Si l'item "staff" a un nombre supérieur a 1
                             {
                                 Console.WriteLine("Vous lancez une boule de feu.");
                             }
@@ -106,6 +125,30 @@ namespace ConsoleApp5
                             Console.WriteLine("Vous n'avez rien a jeté.");
                         }
                         break;
+                    case "info":
+                        // si l'item est info et que la position du joueur est la room 2 et aussi que l'inventaire contiens staff alors...
+                        if (item == "info" & currentPos == 2 & myInventory.ContainsKey("staff"))
+                        {
+                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n° 2.");
+                        }
+                        else if (item == "info" & currentPos == 3 & myInventory.ContainsKey("potion"))
+                        {
+                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n° 4.");
+                        }
+                        else if (item == "info" & currentPos == 2 & !myInventory.ContainsKey("staff"))
+                        {
+                            Console.WriteLine("Un baton étrange est posé contre un des murs. Vous êtes dans la pièce n°2.");
+                        }
+                        else if (item == "info" & currentPos == 3 & !myInventory.ContainsKey("potion"))
+                        {
+                            Console.WriteLine("Une petite fiole  contenant un liquide fluorescent est posée sur la table. Vous êtes dans la pièce n°4.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Il n'y a rien ici. Vous êtes dans la pièce n°" + (currentPos + 1) + " .");
+                        }
+                        break;
+
                 }
 
             }
@@ -146,5 +189,6 @@ namespace ConsoleApp5
             myPlan[4].myExit.Add("est", 5);
             myPlan[5].myExit.Add("west", 4);
         }
+
     }
 }
