@@ -8,8 +8,11 @@ namespace ConsoleApp5
 {
     public class Room
     {
+        // déclaration de variable
         public int ID;
         public string description;
+
+        // Indique les variable a récupéré et a utiliser dans Room.
         public Room(int myID, string myDescription)
         {
             ID = myID;
