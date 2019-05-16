@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp5
 {
     /// <summary>
-    /// Contrôle du jeu: Commandes en deux parties a taper = "pick [staff, potion]; use [staff, potion]; drop [staff, potion]; info [room]"
+    /// Contrôle du jeu: Commandes en deux parties a taper = "pick [staff, potion]; use [staff, potion]; drop [staff, potion]; info [room]; go [north, south, west, east]"
     /// </summary>
     public class Game
     {
@@ -184,7 +184,7 @@ namespace ConsoleApp5
             myPlan[3].myExit.Add("west", 1);
             myPlan[3].myExit.Add("north", 4);
             myPlan[4].myExit.Add("south", 3);
-            myPlan[4].myExit.Add("east", 5);
+            myPlan[4].myExit.Add("ea st", 5);
             myPlan[5].myExit.Add("west", 4);
         }
         public void NothingHere()
